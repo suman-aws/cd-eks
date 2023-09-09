@@ -34,4 +34,4 @@ jobs:
         run: |
           sed -i "s|{{NAME}}|${{ secrets.K8S_DEPLOYMENT_NAME }}|g" k8s/deployment.yaml
           sed -i "s|{{IMAGE}}|${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/${{ secrets.ECR_REPO_NAME }}:${{ github.sha }}|g" k8s/deployment.yaml
-          kubectl apply -f k8s/deployment.yaml
+          kubectl apply -f deployment.yaml
