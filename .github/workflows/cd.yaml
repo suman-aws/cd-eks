@@ -37,4 +37,4 @@ jobs:
           sed -i "s|{{IMAGE}}|${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/${{ secrets.ECR_REPO_NAME }}:${{ github.sha }}|g" deployment.yaml
           cat deployment.yaml
           aws eks update-kubeconfig --region us-west-2 --name tf-new-1
-          # kubectl apply -f deployment.yaml
+          kubectl apply -f deployment.yaml
