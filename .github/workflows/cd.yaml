@@ -19,7 +19,7 @@ jobs:
       - name: Login to ECR
         id: ecr-login
         env : 
-          tag : "my-image-${GITHUB_SHA}"
+          tag : my-image:${{ github.sha }}
         run: |
             aws ecr get-login-password --region ${{ secrets.AWS_REGION }} | docker login --username AWS --password-stdin ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com
       - name: Build and Push Docker Image
