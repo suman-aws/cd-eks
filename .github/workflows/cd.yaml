@@ -16,7 +16,10 @@ jobs:
           echo ${{ secrets.AWS_SECRET_ACCESS_KEY }} > aws_secret_key
           aws configure set aws_access_key_id $(cat aws_access_key)
           aws configure set aws_secret_access_key $(cat aws_secret_key)
-
+      - name: Login to ECR
+        id: ecr-login
+        run: |
+            aws ecr get-login-password --region ${{ secrets.AWS_REGION }} | docker login --username AWS --password-stdin ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com
       - name: Build and Push Docker Image
         run: |
           docker build -t ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/${{ secrets.ECR_REPO_NAME }}:${{ github.sha }} .
