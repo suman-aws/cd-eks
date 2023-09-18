@@ -1,0 +1,22 @@
+name: Greeting Action
+on:
+  workflow_dispatch:
+    inputs:
+      model-names:
+        default: "Model1"
+        description: "Name to greet"
+jobs:
+  say-hello:
+    runs-on: ubuntu-latest
+    steps:
+        - name: Check out code
+          uses: actions/checkout@v2
+      
+        - name: Use the model names
+          run: |
+            MODELS="${{ inputs.model-names }}"
+            IFS=',' read -ra MODEL_ARRAY <<< "$MODELS"
+            for MODEL in "${MODEL_ARRAY[@]}"; do
+                echo "Using model: $MODEL"
+                # Add your actions for each model here
+            done
