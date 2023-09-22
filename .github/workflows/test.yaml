@@ -29,5 +29,6 @@ jobs:
               IFS=',' read -ra MODEL_ARRAY <<< "$MODELS"
               for MODEL in "${MODEL_ARRAY[@]}"; do
               # Generate main.json with the current model name
-              echo "{\"modelname\":\"$MODEL_NAME\"}" > main.json
+                 "{\"modelname\":\"$MODEL_NAME\"}" > main.json
+                 echo main.json
               done
