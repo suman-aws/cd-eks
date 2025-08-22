@@ -16,4 +16,4 @@ spec:
       - name: my-app
         image: {{IMAGE}}
         ports:
-        - containerPort: 80
+        - containerPort: 90
