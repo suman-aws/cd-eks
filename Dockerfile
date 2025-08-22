@@ -12,3 +12,6 @@ RUN pip install -r requirements.txt
 
 # Define the command to start your application
 CMD ["python", "app.py"]
+
+
+#testing
